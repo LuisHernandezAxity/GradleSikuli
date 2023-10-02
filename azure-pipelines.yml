@@ -26,9 +26,6 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
 
-
-gradleWrapperFile 
-
 #steps:
 #- script: |
 #    echo 'Descargando SikuliX'
