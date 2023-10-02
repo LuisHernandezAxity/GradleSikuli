@@ -4,52 +4,38 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+- '*'
 
 pool:
-  vmImage: windows-latest
+  vmImage: 'windows-latest' # O el agente adecuado para tu proyecto
 
 variables:
   GRADLE_OPTS: '-Dorg.gradle.daemon=false' # Opciones de Gradle
 
 steps:
-- task: Gradle@2
+- script: |
+    echo 'Descargando SikuliX'
+    # Agrega aquí comandos para descargar e instalar SikuliX
+  displayName: 'Instalar SikuliX'
+
+- task: UseJavaVersion@0
   inputs:
-    workingDirectory: ''
-    #gradleWrapperFile: 'gradlew'
-    gradleWrapperFile: 'gradlew.bat'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+    versionSpec: '11' # O la versión de Java que necesitas
+    addToPath: true
 
-#steps:
-#- script: |
-#    echo 'Descargando SikuliX'
-#    # Agrega aquí comandos para descargar e instalar SikuliX
-#  displayName: 'Instalar SikuliX'
-
-#- task: UseJavaVersion@0
-#  inputs:
-#    versionSpec: '11' # O la versión de Java que necesitas
-#    addToPath: true
-
-#- script: |
-#    echo 'Ejecutando Gradle Build'
-#    ./gradlew build # Ajusta este comando según tu configuración de Gradle
-#  displayName: 'Ejecutar Gradle Build'
+- script: |
+    echo 'Ejecutando Gradle Build'
+    ./gradlew build # Ajusta este comando según tu configuración de Gradle
+  displayName: 'Ejecutar Gradle Build'
 
 # Agrega aquí más pasos para ejecutar tus pruebas Sikuli y cualquier otro paso necesario
 
-#- task: PublishTestResults@2
-#  inputs:
-#    testResultsFormat: 'JUnit' # Ajusta esto según el formato de tus resultados
-#    testResultsFiles: '**/test-results/*.xml' # Ajusta la ubicación de tus resultados de pruebas
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit' # Ajusta esto según el formato de tus resultados
+    testResultsFiles: '**/test-results/*.xml' # Ajusta la ubicación de tus resultados de pruebas
 
-#- task: PublishBuildArtifacts@1
-#  inputs:
-#    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#    artifactName: 'drop'
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'drop'
