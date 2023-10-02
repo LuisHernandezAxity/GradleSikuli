@@ -39,7 +39,7 @@ public class Test1 {
         screen.keyUp(Key.WIN);*/
 
  //Dar clic en imagen de inicio de windows
-       /* screen.click(InicioWindows);
+       /*screen.click(InicioWindows);
         screen.click(equipo);
         screen.wait(rutaBusqueda,2).click();
         screen.type("C:\\Users\\lsanabria\\Desktop\\Oxxo");
