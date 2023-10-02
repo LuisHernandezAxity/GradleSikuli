@@ -16,7 +16,8 @@ steps:
 - task: Gradle@2
   inputs:
     workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
+    #gradleWrapperFile: 'gradlew'
+    gradleWrapperFile: 'gradlew.bat'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
@@ -26,7 +27,7 @@ steps:
     tasks: 'build'
 
 
-
+gradleWrapperFile 
 
 #steps:
 #- script: |
