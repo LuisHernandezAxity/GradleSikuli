@@ -16,7 +16,6 @@ steps:
 - script: |
     echo 'Descargando SikuliX'
     # Agrega aquí comandos para descargar e instalar SikuliX
-    java -jar path-to/sikulixide-2.0.5.jar
   displayName: 'Instalar SikuliX'
 
 #- task: UseJavaVersion@0
