@@ -7,7 +7,8 @@ trigger:
 - '*'
 
 pool:
-  vmImage: 'windows-latest' # O el agente adecuado para tu proyecto
+  #vmImage: 'windows-latest' # O el agente adecuado para tu proyecto
+  name: 'TestSIkuliX'
 
 variables:
   GRADLE_OPTS: '-Dorg.gradle.daemon=false' # Opciones de Gradle
