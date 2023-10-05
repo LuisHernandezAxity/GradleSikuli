@@ -14,10 +14,10 @@ variables:
   GRADLE_OPTS: '-Dorg.gradle.daemon=false' # Opciones de Gradle
 
 steps:
-- script: |
-    echo 'Descargando SikuliX'
-    # Agrega aquí comandos para descargar e instalar SikuliX
-  displayName: 'Instalar SikuliX'
+#- script: |
+#    echo 'Descargando SikuliX'
+#    # Agrega aquí comandos para descargar e instalar SikuliX
+#  displayName: 'Instalar SikuliX'
 
 #- task: UseJavaVersion@0
 #  inputs:
