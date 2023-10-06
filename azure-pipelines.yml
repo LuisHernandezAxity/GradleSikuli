@@ -25,11 +25,11 @@ steps:
     rm gradle.zip
   displayName: 'Install Gradle'
 
-- task: UseJavaVersion@0
-  inputs:
-    versionSpec: '11'
-    addToPath: true
-  displayName: 'Set Java version'
+#- task: UseJavaVersion@0
+#  inputs:
+#    versionSpec: '11'
+#    addToPath: true
+#  displayName: 'Set Java version'
 
 - script: |
     echo '##[section] Gradle Build'
