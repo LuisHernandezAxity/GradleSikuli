@@ -7,48 +7,30 @@ trigger:
 - '*'
 
 pool:
-  #vmImage: 'windows-latest' # O el agente adecuado para tu proyecto
   name: 'TestSIkuliX'
 
-#variables:
-  # Define las variables de entorno necesarias para tu proyecto
-  # Por ejemplo, JAVA_HOME y GRADLE_HOME
- # JAVA_HOME: '/usr/lib/jvm/zulu-11-azure-amd64'
- # GRADLE_HOME: '/opt/gradle/latest'
- # PATH: '$(JAVA_HOME)/bin:$(GRADLE_HOME)/bin:$(PATH)'
-
 steps:
-- script: |
-    echo '##[section] Installing Gradle'
-    curl -sL https://services.gradle.org/distributions/gradle-7.2-bin.zip -o gradle.zip
-    unzip -q gradle.zip -d /opt/gradle
-    rm gradle.zip
-  displayName: 'Install Gradle'
-
-#- task: UseJavaVersion@0
-#  inputs:
-#    versionSpec: '11'
-#    addToPath: true
-#  displayName: 'Set Java version'
+- task: UseJavaVersion@0
+  inputs:
+    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
 
 - script: |
-    echo '##[section] Gradle Build'
-    gradle build
+    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
   displayName: 'Build with Gradle'
 
-- script: |
-    echo '##[section] Running Tests'
-    gradle test
-  displayName: 'Run Tests'
+- task: Gradle@2
+  inputs:
+    workingDirectory: '$(System.DefaultWorkingDirectory)'  # Define el directorio de trabajo actual.
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: true
+    testResultsFiles: '**/build/test-results/test/*.xml'  # Ruta a los resultados de las pruebas unitarias.
+    tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/build/test-results/test/*.xml'
-  displayName: 'Publish Test Results'
+    testResultsFormat: 'JUnit'  # Formato de los resultados de las pruebas.
+    testResultsFiles: '**/TEST-*.xml'  # Ruta a los resultados de las pruebas JUnit.
+    searchFolder: '$(System.DefaultWorkingDirectory)'  # Directorio de búsqueda de resultados.
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: 'build/libs'
-    artifactName: 'drop'
-  displayName: 'Publish Artifact'
+# Agrega más tareas según sea necesario, como la tarea para implementar tu aplicación.
