@@ -10,33 +10,45 @@ pool:
   #vmImage: 'windows-latest' # O el agente adecuado para tu proyecto
   name: 'TestSIkuliX'
 
-variables:
-  GRADLE_OPTS: '-Dorg.gradle.daemon=false' # Opciones de Gradle
+#variables:
+  # Define las variables de entorno necesarias para tu proyecto
+  # Por ejemplo, JAVA_HOME y GRADLE_HOME
+ # JAVA_HOME: '/usr/lib/jvm/zulu-11-azure-amd64'
+ # GRADLE_HOME: '/opt/gradle/latest'
+ # PATH: '$(JAVA_HOME)/bin:$(GRADLE_HOME)/bin:$(PATH)'
 
 steps:
-#- script: |
-#    echo 'Descargando SikuliX'
-#    # Agrega aquí comandos para descargar e instalar SikuliX
-#  displayName: 'Instalar SikuliX'
+- script: |
+    echo '##[section] Installing Gradle'
+    curl -sL https://services.gradle.org/distributions/gradle-7.2-bin.zip -o gradle.zip
+    unzip -q gradle.zip -d /opt/gradle
+    rm gradle.zip
+  displayName: 'Install Gradle'
 
-#- task: UseJavaVersion@0
-#  inputs:
-#    versionSpec: 'JDKVersion' # O la versión de Java que necesitas
-#    addToPath: true
+- task: UseJavaVersion@0
+  inputs:
+    versionSpec: '11'
+    addToPath: true
+  displayName: 'Set Java version'
 
 - script: |
-    echo 'Ejecutando Gradle Build'
-    ./gradlew build # Ajusta este comando según tu configuración de Gradle
-  displayName: 'Ejecutar Gradle Build'
+    echo '##[section] Gradle Build'
+    gradle build
+  displayName: 'Build with Gradle'
 
-# Agrega aquí más pasos para ejecutar tus pruebas Sikuli y cualquier otro paso necesario
+- script: |
+    echo '##[section] Running Tests'
+    gradle test
+  displayName: 'Run Tests'
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'JUnit' # Ajusta esto según el formato de tus resultados
-    testResultsFiles: '**/test-results/*.xml' # Ajusta la ubicación de tus resultados de pruebas
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/build/test-results/test/*.xml'
+  displayName: 'Publish Test Results'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    pathtoPublish: 'build/libs'
     artifactName: 'drop'
+  displayName: 'Publish Artifact'
