@@ -10,9 +10,9 @@ pool:
   name: 'TestSIkuliX'
 
 steps:
-#- task: UseJavaVersion@0
-#  inputs:
-#    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
+- task: UseJavaVersion@0
+  inputs:
+    versionSpec: 'C:\Program Files\Java\jdk-20\bin\java.exe'  # Especifica la versión de Java que deseas usar.
 
 - script: |
     ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
