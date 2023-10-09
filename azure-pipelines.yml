@@ -24,13 +24,13 @@ steps:
     gradleWrapperFile: 'gradlew.bat'
     gradleOptions: '-Xmx3072m'
     publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'  # Ruta a los resultados de las pruebas unitarias.
+    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
     tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'  # Formato de los resultados de las pruebas.
-    testResultsFiles: '**/TEST-*.xml'  # Ruta a los resultados de las pruebas JUnit.
+    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
     searchFolder: '$(System.DefaultWorkingDirectory)'  # Directorio de búsqueda de resultados.
 
 # Agrega más tareas según sea necesario, como la tarea para implementar tu aplicación.
