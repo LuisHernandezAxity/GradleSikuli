@@ -10,27 +10,36 @@ pool:
   name: 'TestSIkuliX'
 
 steps:
+- uses: actions/checkout@v3
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+
 #- task: UseJavaVersion@0
 #  inputs:
 #    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
+
 
 #- script: |
 #    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
 #  displayName: 'Build with Gradle'
 
 - task: Gradle@3
-  inputs:
+inputs:
     workingDirectory: '$(System.DefaultWorkingDirectory)'  # Define el directorio de trabajo actual.
     gradleWrapperFile: 'gradlew.bat'
     gradleOptions: '-Xmx3072m'
     publishJUnitResults: true
-    testResultsFiles: 'C:TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
+    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
     tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'  # Formato de los resultados de las pruebas.
-    testResultsFiles: 'C:TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
+    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
     searchFolder: '$(System.DefaultWorkingDirectory)'  # Directorio de búsqueda de resultados.
 
 # Agrega más tareas según sea necesario, como la tarea para implementar tu aplicación.
