@@ -27,7 +27,7 @@ steps:
     testResultsFiles: '**/TEST-*.xml'  # Ruta a los resultados de las pruebas unitarias.
     tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
 
-- task: PublishTestResults@3
+- task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'  # Formato de los resultados de las pruebas.
     testResultsFiles: 'C:/TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
