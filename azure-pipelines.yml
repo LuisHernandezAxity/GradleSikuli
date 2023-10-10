@@ -14,7 +14,6 @@ steps:
 #  inputs:
 #    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
 
-
 #- script: |
 #    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
 #  displayName: 'Build with Gradle'
@@ -25,13 +24,13 @@ inputs:
     gradleWrapperFile: 'gradlew.bat'
     gradleOptions: '-Xmx3072m'
     publishJUnitResults: true
-    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
+    testResultsFiles: 'C:/TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
     tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
 
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'  # Formato de los resultados de las pruebas.
-    testResultsFiles: 'C:\TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
+    testResultsFiles: 'C:/TEST.xml'  # Ruta a los resultados de las pruebas JUnit.
     searchFolder: '$(System.DefaultWorkingDirectory)'  # Directorio de búsqueda de resultados.
 
 # Agrega más tareas según sea necesario, como la tarea para implementar tu aplicación.
