@@ -18,15 +18,6 @@ steps:
 #    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
 #  displayName: 'Build with Gradle'
 
-#- task: Gradle@3
-#inputs:
-#    workingDirectory: '$(System.DefaultWorkingDirectory)'  # Define el directorio de trabajo actual.
-#    gradleWrapperFile: 'gradlew.bat'
-#    gradleOptions: '-Xmx3072m'
-#    publishJUnitResults: true
-#    testResultsFiles: 'C:/TEST.xml'  # Ruta a los resultados de las pruebas unitarias.
-#    tasks: 'test'  # Tareas de Gradle a ejecutar, en este caso, ejecuta las pruebas unitarias.
-
 - task: Gradle@3
   inputs:
     workingDirectory: '$(System.DefaultWorkingDirectory)'  # Define el directorio de trabajo actual.
