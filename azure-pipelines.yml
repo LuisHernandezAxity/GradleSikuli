@@ -8,6 +8,7 @@ trigger:
 
 pool:
   name: 'TestSIkuliX'
+  displayName: 'Agent Active'
 
 steps:
 
