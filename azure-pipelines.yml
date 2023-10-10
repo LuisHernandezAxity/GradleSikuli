@@ -10,14 +10,6 @@ pool:
   name: 'TestSIkuliX'
 
 steps:
-#- task: UseJavaVersion@0
-#  inputs:
-#    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
-
-#- script: 
-#- task: Gradle@3
-#  './gradlew build'  # Ejecuta el comando Gradle para compilar tu proyecto.
-#  displayName: 'Build with Gradle'
 
 - script: 'gradlew test' # Esto ejecutará los tests de Sikuli
   displayName: 'Run Sikuli Tests'
