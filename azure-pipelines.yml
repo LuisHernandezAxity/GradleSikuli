@@ -14,9 +14,10 @@ steps:
 #  inputs:
 #    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
 
-#- script: |
-#    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
-#  displayName: 'Build with Gradle'
+- script: 
+  ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
+  displayName: 'Build with Gradle'
+
 - script: 'gradlew test' # Esto ejecutará los tests de Sikuli
   displayName: 'Run Sikuli Tests'
 
