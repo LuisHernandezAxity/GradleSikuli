@@ -11,9 +11,7 @@ pool:
   displayName: 'Agent Active'
 
 steps:
-
 - script: 'gradlew test' # Esto ejecutará los tests de Sikuli
-  displayName: 'Run Sikuli Tests'
 
 - task: Gradle@3
   inputs:
