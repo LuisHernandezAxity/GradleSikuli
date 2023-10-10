@@ -1,11 +1,12 @@
-import com.sun.tools.javac.Main;
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Key;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
+
+import com.sun.tools.javac.Main;
 
 public class Selenium {
     private static final Pattern rutaBusquedaGoogle = new Pattern(Main.class.getClassLoader().getResource("rutaBusquedaGoogle.png"));
