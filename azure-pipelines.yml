@@ -14,7 +14,7 @@ steps:
 #  inputs:
 #    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
 
-- script: 
+#- script: 
 #- task: Gradle@3
 #  './gradlew build'  # Ejecuta el comando Gradle para compilar tu proyecto.
 #  displayName: 'Build with Gradle'
