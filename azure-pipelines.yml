@@ -17,7 +17,7 @@ steps:
 #- script: |
 #    ./gradlew build  # Ejecuta el comando Gradle para compilar tu proyecto.
 #  displayName: 'Build with Gradle'
-- script: 'test.java' # Esto ejecutará los tests de Sikuli
+- script: 'gradlew test' # Esto ejecutará los tests de Sikuli
   displayName: 'Run Sikuli Tests'
 
 - task: Gradle@3
