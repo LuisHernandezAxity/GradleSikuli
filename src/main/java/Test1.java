@@ -1,14 +1,11 @@
-import com.sun.tools.javac.Main;
-
-import org.sikuli.script.*;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Key;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
+
+import com.sun.tools.javac.Main;
 
 
 public class Test1 {
@@ -33,10 +30,10 @@ public class Test1 {
        App.close("C:\\Program Files (x86)\\Notepad++\\notepad++.exe");*/
 
  //Presionas las teclas windows + E
-        /*screen.keyDown(Key.WIN);
+        screen.keyDown(Key.WIN);
         screen.keyDown(KeyEvent.VK_E);
         screen.keyUp(KeyEvent.VK_E);
-        screen.keyUp(Key.WIN);*/
+        screen.keyUp(Key.WIN);
 
  //Dar clic en imagen de inicio de windows
        /*screen.click(InicioWindows);
