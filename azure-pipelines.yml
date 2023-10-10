@@ -10,14 +10,6 @@ pool:
   name: 'TestSIkuliX'
 
 steps:
-- uses: actions/checkout@v3
-    - name: set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: gradle
-
 #- task: UseJavaVersion@0
 #  inputs:
 #    versionSpec: '11'  # Especifica la versión de Java que deseas usar.
