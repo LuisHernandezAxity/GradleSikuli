@@ -19,7 +19,7 @@ steps:
     jdkVersionOption: 'default'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
+    testResultsFiles: '/TEST-*.xml'
     tasks: 'build'
 
 
