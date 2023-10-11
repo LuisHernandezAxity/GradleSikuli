@@ -4,11 +4,11 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- '*'
+- main
 
 pool:
-#  vmImage: ubuntu-latest
-name: 'TestSIkuliX'
+  vmImage: ubuntu-latest
+#name: 'TestSIkuliX'
 
 steps:
 - task: Gradle@2
